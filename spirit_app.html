@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spirit Level App</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(30, 30, 30);
+        }
+        
+        #level_case {
+            background-image: url(Level_case.jpg);
+            height: 73.7px;
+            width: 735px;
+            margin: auto;
+            padding-top: 2.3px;
+        }
+        
+        /* left of bubble housing starts at 210px left and ends at 457px*/
+        
+        #level_bubble {
+            background-color: white;
+            height: 15px;
+            width: 44px;
+            margin: 0;
+            border: 2px solid black;
+            border-radius: 40%;
+            position: relative;
+            left: 342.52px;
+        }
+        
+        #angleDisp {
+            font-family: sans-serif;
+            color: white;
+            font-size: 1.5em;
+            margin: auto;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="level_case">
+        <div id="level_bubble"></div>
+    </div>
+    <div id="angleDisp"></div>
+    <div id=CAt_logo></div>
+    
+    <script>
+        window.addEventListener("deviceorientation", bubble);
+        check = 0;
+        var outputAngle = document.getElementById("angleDisp");
+        var bubbleElement = document.getElementById("level_bubble");
+        
+        function bubble(orientation) {
+            var gammy = orientation.gamma;
+            var angleOut, x_percentage, x_calc, xOut;
+            
+            if(!window.deviceorientation && check === 0) {
+                alert("Cannot detect device orientation");
+                check = 1;
+            } else if(window.deviceorientation) {
+                if(screen.orientation === "landscape-primary") {
+                    angleOut = 90 + gammy;
+                    outputAngle = angleOut;
+                    
+                    x_percentage = percentageCalc(angleOut);
+                    
+                    x_calc = 210 + x_percentage * 247;
+                    
+                    xOut = x_calc + "px";
+                } else if(screen.orientation === "landscape-secondary") {
+                    angleOut = 90 - gammy;
+                    outputAngle = angleOut;
+                    
+                    x_percentage = percentageCalc(angleOut);
+                    
+                    x_calc = 210 + x_percentage * 247;
+                    
+                    xOut = x_calc + "px";
+                } else {
+                    alert("please reorientate phone to landscape");
+                }
+            }
+        }
+        
+        function percentageCalc(angle) {
+            var percentage;
+            
+            if(angle < 0) {
+                percentage = -angle/180;
+            } else if(angle >= 0) {
+                percentage = angle/180;
+            } else {
+                return "Error";
+            }
+            
+            return percentage;
+        }
+        
+    </script>
+</body>
+</html>
