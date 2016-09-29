@@ -52,9 +52,9 @@
     <script>
         window.addEventListener("deviceorientation", handleIt);
         var disp = document.getElementById("angleDisp");
-        var gamma = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var alpha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var gamma = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var alpha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         
         function handleIt(ori)
         {
@@ -75,7 +75,7 @@
             var betaSum = 0;
             var alphaSum = 0;
             
-            for(var i = 0; i < 20; i++) 
+            for(var i = 0; i < gamma.length; i++) 
             {
                 gammaSum += gamma[i];
                 betaSum += beta[i];
