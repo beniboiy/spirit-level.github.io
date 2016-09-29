@@ -51,15 +51,26 @@
     <script>
         window.addEventListener("deviceorientation", handleIt);
         var disp = document.getElementById("angleDisp");
-        
+        var gamma = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var alpha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         
         function handleIt(ori)
         {
-            var gamma = ori.gamma;
-            var beta = ori.beta;
-            var alpha = ori.alpha;
+            var gammaInst = ori.gamma;
+            var betaInst = ori.beta;
+            var alphaInst = ori.alpha;
             
-            disp.innerHTML = gamma + "<br/>" + beta + "<br/>" + alpha;
+            gamma.push(gammaInst);
+            gamma.pop();
+            
+            beta.push(betaInst);
+            beta.pop();
+            
+            alpha.push(alphaInst);
+            alpha.pop();
+            
+            disp.innerHTML = "Gamma: " + gamma + "<br/>" + "Beta: " + beta + "<br/>" + "Alpha: "  + alpha;
         }
     </script>
 </body>
