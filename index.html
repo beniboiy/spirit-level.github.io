@@ -49,57 +49,18 @@
     <div id=CAt_logo></div>
     
     <script>
-        window.addEventListener("deviceorientation", bubble);
-        check = 0;
-        var outputAngle = document.getElementById("angleDisp");
-        var bubbleElement = document.getElementById("level_bubble");
+        window.addEventListener("deviceorientation", handleIt);
+        var disp = document.getElementById("angleDisp");
         
-        function bubble(orientation) {
-            var gammy = orientation.gamma;
-            var angleOut, x_percentage, x_calc, xOut;
+        
+        function handleIt(ori)
+        {
+            var gamma = ori.gamma;
+            var beta = ori.beta;
+            var alpha = ori.alpha;
             
-            if(!window.deviceorientation && check === 0) {
-                alert("Cannot detect device orientation");
-                check = 1;
-            } else if(window.deviceorientation) {
-                if(screen.orientation === "landscape-primary") {
-                    angleOut = 90 + gammy;
-                    outputAngle = angleOut;
-                    
-                    x_percentage = percentageCalc(angleOut);
-                    
-                    x_calc = 210 + x_percentage * 247;
-                    
-                    xOut = x_calc + "px";
-                } else if(screen.orientation === "landscape-secondary") {
-                    angleOut = 90 - gammy;
-                    outputAngle = angleOut;
-                    
-                    x_percentage = percentageCalc(angleOut);
-                    
-                    x_calc = 210 + x_percentage * 247;
-                    
-                    xOut = x_calc + "px";
-                } else {
-                    alert("please reorientate phone to landscape");
-                }
-            }
+            disp.innerHTML = gamma + "<br/>" + beta + "<br/>" + alpha;
         }
-        
-        function percentageCalc(angle) {
-            var percentage;
-            
-            if(angle < 0) {
-                percentage = -angle/180;
-            } else if(angle >= 0) {
-                percentage = angle/180;
-            } else {
-                return "Error";
-            }
-            
-            return percentage;
-        }
-        
     </script>
 </body>
 </html>
