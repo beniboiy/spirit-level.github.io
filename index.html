@@ -82,9 +82,9 @@
                 alphaSum += alpha[i];
             }
             
-            var gammaAvg = Math.round(gammaSum/20);
-            var betaAvg = Math.round(betaSum/20);
-            var alphaAvg = Math.round(alphaSum/20);
+            var gammaAvg = Math.round(gammaSum/gamma.length);
+            var betaAvg = Math.round(betaSum/beta.length);
+            var alphaAvg = Math.round(alphaSum/alpha.length);
             
             disp.innerHTML = "Gamma: " + gammaAvg + "<br/>" + "Beta: " + betaAvg + "<br/>" + "Alpha: "  + alphaAvg;
         }
