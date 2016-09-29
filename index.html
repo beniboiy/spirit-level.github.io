@@ -70,7 +70,22 @@
             alpha.push(alphaInst);
             alpha.pop();
             
-            disp.innerHTML = "Gamma: " + gamma + "<br/>" + "Beta: " + beta + "<br/>" + "Alpha: "  + alpha;
+            var gammaSum = 0;
+            var betaSum = 0;
+            var alphaSum = 0;
+            
+            for(var i = 0; i <= 20; i++) 
+            {
+                gammaSum += gamma[i];
+                betaSum += beta[i];
+                alphaSum += alpha[i];
+            }
+            
+            var gammaAvg = gammaSum/20;
+            var betaAvg = betaSum/20;
+            var alphaAvg = alphaSum/20;
+            
+            disp.innerHTML = "Gamma: " + gammaAvg + "<br/>" + "Beta: " + betaAvg + "<br/>" + "Alpha: "  + alphaAvg;
         }
     </script>
 </body>
