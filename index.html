@@ -63,13 +63,13 @@
             var alphaInst = ori.alpha;
             
             gamma.push(gammaInst);
-            gamma.pop();
+            gamma.shift();
             
             beta.push(betaInst);
-            beta.pop();
+            beta.shift();
             
             alpha.push(alphaInst);
-            alpha.pop();
+            alpha.shift();
             
             var gammaSum = 0;
             var betaSum = 0;
