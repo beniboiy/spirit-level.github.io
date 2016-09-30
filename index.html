@@ -62,13 +62,25 @@
             var betaInst = ori.beta;
             var alphaInst = ori.alpha;
             
-            gamma.push(gammaInst);
+            if(gammaInst >= 0 && gammaInst <= 180) {
+                gamma.push(gammaInst);
+            } else if (gammaInst < 0) {
+                gamma.push(360 + gammaInst);
+            };
             gamma.shift();
             
-            beta.push(betaInst);
+            if(betaInst >= 0 && betaInst <= 180) {
+                beta.push(betaInst);
+            } else if(betaInst < 0) {
+                beta.push(360 + betaInst);
+            };
             beta.shift();
             
-            alpha.push(alphaInst);
+            if(alphaInst >= 0 && alphaInst <= 180) {
+                alpha.push(alphaInst);
+            } else if(alphaInst < 0) {
+                alpha.pus(360 + alphaInst);
+            };
             alpha.shift();
             
             var gammaSum = 0;
