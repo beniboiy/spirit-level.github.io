@@ -55,6 +55,8 @@
     <script>
         window.addEventListener("deviceorientation", handleIt);
         var disp = document.getElementById("angleDisp");
+        var bubble = document.getElementById("level_bubble");
+        
         var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         
         function handleIt(ori)
@@ -79,9 +81,18 @@
             // NOTE: on a real spirit level, ~45deg angle either side of horizontal is likely to give bubble @End
             var percentage = (betaAvg/180) * 100;
             
+            // The total width of the bubble housing
+            var bubWidth = (457 - 210);
+            // Calculating position
+            var bubPos = 210 + (bubWidth * (percentage/100));
+            var bubPosOut = bubPos + "px";
             
-            disp.style.fontSize = "2em";
-            disp.innerHTML = "Beta: " + betaAvg + "<br/>" + "Percentage travel: " + percentage + "%";
+            // Changing bubble position
+            bubble.style.left = bubPosOut;
+            
+            // Displaying outputs
+            disp.style.fontSize = "3em";
+            disp.innerHTML = "Beta: " + betaAvg + "<br/>" + "Percentage travel: " + Math.round(percentage) + "%";
         }
     </script>
 </body>
