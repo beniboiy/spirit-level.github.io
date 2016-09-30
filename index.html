@@ -77,9 +77,11 @@
             
             // Calculate angle as percentage of usefull angles
             // NOTE: on a real spirit level, ~45deg angle either side of horizontal is likely to give bubble @End
+            var percentage = (betaAvg/180) * 100;
+            
             
             disp.style.fontSize = "2em";
-            disp.innerHTML = "Beta: " + betaAvg;
+            disp.innerHTML = "Beta: " + betaAvg + "<br/>" + "Percentage travel: " + percentage + "%";
         }
     </script>
 </body>
