@@ -15,9 +15,9 @@
         
         #level_case {
             background-image: url(Level_case.jpg);
-            height: 20px;
+            height: 72px;
             margin: auto;
-            width: 400px;
+            width: 734px;
             padding-top: 2.3px;
         }
         
@@ -58,6 +58,8 @@
         
         function handleIt(ori)
         {
+            /* useful beta value is from 0 (in this case, phone vertical upside down) and 180 
+            (in this case , phone vertival rightside up) */
             var betaInst = ori.beta;
          
             beta.push(90 + betaInst);
@@ -72,9 +74,8 @@
             
             var betaAvg = Math.round(betaSum/beta.length);
             
-            /* useful beta value is from 0 (in this case, phone vertical upside down) and 180 
-            (in this case , phone vertival rightside up) */
-            
+            // Calculate angle as percentage of usefull angles
+            // NOTE: on a real spirit level, ~45deg angle either side of horizontal is likely to give bubble @End
             
             disp.style.fontSize = "2em";
             disp.innerHTML = "Beta: " + betaAvg;
