@@ -52,22 +52,11 @@
     <script>
         window.addEventListener("deviceorientation", handleIt);
         var disp = document.getElementById("angleDisp");
-        var gamma = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-        var alpha = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var beta = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
         
         function handleIt(ori)
         {
-            var gammaInst = ori.gamma;
             var betaInst = ori.beta;
-            var alphaInst = ori.alpha;
-            
-            if(gammaInst >= 0 && gammaInst <= 180) {
-                gamma.push(gammaInst);
-            } else if (gammaInst < 0) {
-                gamma.push(360 + gammaInst);
-            };
-            gamma.shift();
             
             if(betaInst >= 0 && betaInst <= 180) {
                 beta.push(betaInst);
@@ -75,30 +64,17 @@
                 beta.push(360 + betaInst);
             };
             beta.shift();
-            
-            if(alphaInst >= 0 && alphaInst <= 180) {
-                alpha.push(alphaInst);
-            } else if(alphaInst < 0) {
-                alpha.push(360 + alphaInst);
-            };
-            alpha.shift();
-            
-            var gammaSum = 0;
+
             var betaSum = 0;
-            var alphaSum = 0;
             
-            for(var i = 0; i < gamma.length; i++) 
+            for(var i = 0; i < beta.length; i++) 
             {
-                gammaSum += gamma[i];
                 betaSum += beta[i];
-                alphaSum += alpha[i];
             }
             
-            var gammaAvg = Math.round(gammaSum/gamma.length);
             var betaAvg = Math.round(betaSum/beta.length);
-            var alphaAvg = Math.round(alphaSum/alpha.length);
             
-            disp.innerHTML = "Gamma: " + gammaAvg + "<br/>" + "Beta: " + betaAvg + "<br/>" + "Alpha: "  + alphaAvg;
+            disp.innerHTML = "Beta: " + betaAvg;
         }
     </script>
 </body>
