@@ -57,12 +57,8 @@
         function handleIt(ori)
         {
             var betaInst = ori.beta;
-            
-            if(betaInst >= 0 && betaInst <= 180) {
-                beta.push(betaInst);
-            } else if(betaInst < 0) {
-                beta.push(360 + betaInst);
-            };
+         
+            beta.push(90 + betaInst);
             beta.shift();
 
             var betaSum = 0;
@@ -74,6 +70,11 @@
             
             var betaAvg = Math.round(betaSum/beta.length);
             
+            /* useful beta value is from 0 (in this case, phone vertical upside down) and 180 
+            (in this case , phone vertival rightside up) */
+            
+            
+            disp.style.fontSize = "2em";
             disp.innerHTML = "Beta: " + betaAvg;
         }
     </script>
